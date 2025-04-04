@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -10,6 +12,21 @@ import {
 } from "lucide-react";
 
 export default function Hero() {
+  const [windowSize, setWindowSize] = useState<{
+    width: number;
+    height: number;
+  } | null>(null);
+
+  useEffect(() => {
+    // Só roda no client-side
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  }, []);
+
+  if (!windowSize) return null; // Evita renderizar até ter o tamanho da tela
+  
   return (
     <section className="relative h-screen flex flex-col gap-5 items-center justify-center overflow-hidden">
       {/* Background animation */}
