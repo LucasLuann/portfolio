@@ -26,9 +26,9 @@ export default function Hero() {
   }, []);
 
   if (!windowSize) return null; // Evita renderizar até ter o tamanho da tela
-  
+
   return (
-    <section className="relative h-screen flex flex-col gap-5 items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex flex-col gap-5 items-center justify-center  pt-40 md:pt-0">
       {/* Background animation */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50" />
@@ -68,23 +68,21 @@ export default function Hero() {
       </div>
 
       <div className="z-10">
-        <div className="flex flex-col md:flex-row items-center gap-8">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left px-4 md:px-0">
           {/* Imagem Responsiva */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }} // Usei easeOut para suavizar
-            whileHover={{ scale: 1.05 }} // Pequeno efeito ao passar o mouse
+            transition={{ duration: 1, ease: "easeOut" }}
+            whileHover={{ scale: 1.05 }}
           >
             <motion.div
-              animate={{
-                y: [0, -10, 0], // Movimento suave para cima e para baixo
-              }}
+              animate={{ y: [0, -10, 0] }}
               transition={{
-                duration: 2, // Tempo do ciclo
-                repeat: Infinity, // Repetir infinitamente
-                repeatType: "reverse", // Faz o efeito de vai e volta suave
-                ease: "easeInOut", // Movimentação mais natural
+                duration: 2,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
               }}
             >
               <Image
@@ -92,13 +90,13 @@ export default function Hero() {
                 alt="Logo"
                 width={500}
                 height={500}
-                className="w-56 md:w-48 lg:w-72"
+                className="w-48 sm:w-48 md:w-56 lg:w-72 ml-16"
               />
             </motion.div>
           </motion.div>
 
           {/* Texto */}
-          <div>
+          <div className="flex flex-col items-center md:items-start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -114,7 +112,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
                 <span className="inline-block bg-gradient-to-r from-blue-500 to-purple-700 text-transparent bg-clip-text">
                   Lucas Luann
                 </span>
@@ -126,7 +124,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <h3 className="text-xl md:text-2xl text-foreground/80 mb-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl text-foreground/80 mb-8">
                 Desenvolvedor Front-end
               </h3>
             </motion.div>
@@ -135,16 +133,21 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex gap-4 justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
               <Button
                 size="lg"
                 asChild
-                className="bg-blue-500 hover:bg-blue-600"
+                className="bg-blue-500 hover:bg-blue-600 w-full sm:w-auto"
               >
                 <a href="#projects">Ver Projetos</a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="w-full sm:w-auto"
+              >
                 <a href="#contact">Entre em Contato</a>
               </Button>
             </motion.div>
@@ -153,8 +156,9 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
-              className="flex justify-start mt-12 space-x-4"
+              className="flex justify-center md:justify-start mt-12 space-x-4"
             >
+              {/* Ícones */}
               <motion.a
                 href="https://github.com/LucasLuann"
                 target="_blank"
@@ -192,7 +196,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="bottom-0 left-1/2 "
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}

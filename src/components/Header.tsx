@@ -20,7 +20,7 @@ export default function Header() {
       initial={{ y: -200 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100 }}
-      className={`fixed w-full z-40 transition-all duration-300bg-transparent py-4 `}
+      className={` w-full z-40 transition-all duration-300bg-transparent py-4 `}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <motion.div
@@ -35,7 +35,7 @@ export default function Header() {
         </motion.div>
 
         <nav>
-          <ul className="flex space-x-8">
+          <ul className="flex space-x-8 flex-wrap">
             {navItems.map((item, i) => (
               <motion.li
                 key={item.name}
