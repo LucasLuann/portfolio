@@ -29,7 +29,9 @@ export default function Header() {
           transition={{ delay: 0.2 }}
           className="text-2xl font-bold"
         >
-          <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">Lucas</span> Luann
+          <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text">
+           Dev LL
+          </span>{" "}
         </motion.div>
 
         <nav>
