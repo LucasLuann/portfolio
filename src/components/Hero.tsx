@@ -30,7 +30,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen flex flex-col gap-5 items-center justify-center  pt-40 md:pt-0">
       {/* Background animation */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <div className="absolute left-20 right-0 top-10 bottom-00 overflow-x-clip">
         <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50" />
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
@@ -90,7 +90,7 @@ export default function Hero() {
                 alt="Logo"
                 width={500}
                 height={500}
-                className="w-48 sm:w-48 md:w-56 lg:w-72 ml-16"
+                className="w-52 sm:w-48 md:w-56 lg:w-72 ml-20"
               />
             </motion.div>
           </motion.div>
@@ -196,7 +196,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="bottom-0 left-1/2 "
+        className="bottom-0 left-1/2 mt-20"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
