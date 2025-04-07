@@ -86,11 +86,11 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/profile-img-removebg-preview.png"
+                src="/avatar-profile.png"
                 alt="Logo"
                 width={500}
                 height={500}
-                className="w-52 sm:w-48 md:w-56 lg:w-72 ml-20"
+                className="w-52 sm:w-48 md:w-56 lg:w-72 rounded-2xl"
               />
             </motion.div>
           </motion.div>
@@ -113,7 +113,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
-                <span className="inline-block bg-gradient-to-r from-blue-500 to-purple-700 text-transparent bg-clip-text">
+                <span className="inline-block bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
                   Lucas Luann
                 </span>
               </h1>
