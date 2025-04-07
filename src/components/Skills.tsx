@@ -1,4 +1,5 @@
 import React from "react";
+import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { FaReact } from "react-icons/fa";
 import {
@@ -8,7 +9,6 @@ import {
 } from "react-icons/ri";
 import { TbBrandTypescript, TbBrandCss3 } from "react-icons/tb";
 import { GrHtml5 } from "react-icons/gr";
-import { LuBrain } from "react-icons/lu";
 
 const skillsList = [
   {
@@ -61,46 +61,48 @@ const Skills = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-10 mt-5 "
+            className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {skillsList.map((skill, index) => (
               <div
                 key={index}
-                className=" flex items-center rounded-md border border-primary p-4 w-full md:w-1/4 mx-auto"
+                className="flex items-center gap-4 w-full p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/50 transition-all duration-300 hover:bg-black/5 hover:border-blue-400/60"
               >
-                {skill.icon}
+                <div className="text-primary w-10 h-10">{skill.icon}</div>
                 <div className="flex-1 space-y-1">
-                  <p className="text-md font-medium leading-none">
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
                     {skill.name}
                   </p>
                 </div>
-                
               </div>
             ))}
           </motion.div>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-16 bg-card border border-border rounded-xl p-6 md:p-8 shadow-lg"
-        >
-          <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <div className="bg-primary/10 p-4 rounded-full">
-              <LuBrain size={40} />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="mt-20 w-full overflow-hidden"
+          >
+            <div className="relative h-16 w-full">
+              <motion.div
+                className="absolute flex gap-4 whitespace-nowrap"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  ease: "linear",
+                  duration: 10,
+                  repeat: Infinity,
+                }}
+              >
+                {[...skillsList, ...skillsList, ...skillsList].map((skill, index) => (
+                  <Badge key={index} variant="secondary">
+                    {skill.name}
+                  </Badge>
+                ))}
+              </motion.div>
             </div>
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold mb-2">
-                Sempre Aprendendo
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Estou constantemente aprimorando minhas habilidades e explorando
-                novas tecnologias para criar soluções web modernas e eficientes.
-              </p>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
