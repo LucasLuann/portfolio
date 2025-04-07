@@ -1,13 +1,7 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { MoonIcon, SunIcon } from "lucide-react";
-import { useTheme } from "next-themes";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
-
   const navItems = [
     { name: "Sobre", href: "#about" },
     { name: "Habilidades", href: "#skills" },
@@ -20,7 +14,7 @@ export default function Header() {
       initial={{ y: -200 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100 }}
-      className={` w-full z-40 transition-all duration-300bg-transparent py-4 `}
+      className="w-full z-40 transition-all duration-300 bg-transparent py-4"
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <motion.div
@@ -30,12 +24,13 @@ export default function Header() {
           className="text-2xl font-bold"
         >
           <span className="bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
-           Dev LL
-          </span>{" "}
+            Dev LL
+          </span>
         </motion.div>
 
-        <nav>
-          <ul className="flex space-x-8 flex-wrap">
+        {/* Menu Desktop */}
+        <nav className="hidden md:block">
+          <ul className="flex space-x-8">
             {navItems.map((item, i) => (
               <motion.li
                 key={item.name}
@@ -59,21 +54,10 @@ export default function Header() {
           </ul>
         </nav>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle theme"
-          >
-            <SunIcon className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <MoonIcon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          </Button>
-        </motion.div>
+        {/* Menu Mobile */}
+        <div className="md:hidden">
+          <MobileMenu navItems={navItems} />
+        </div>
       </div>
     </motion.header>
   );
