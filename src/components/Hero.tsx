@@ -191,22 +191,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="bottom-0 left-1/2 mt-20"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-        >
-          <a href="#about" aria-label="Rolar para baixo">
-            <ArrowDownIcon className="h-14 w-14 text-blue-400 transition-colors hover:text-primary " />
-          </a>
-        </motion.div>
-      </motion.div>
     </section>
   );
 }
