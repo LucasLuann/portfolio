@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  GithubIcon,
-  LinkedinIcon,
-  MailIcon,
-} from "lucide-react";
+import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 export default function Hero() {
   const [windowSize, setWindowSize] = useState<{
@@ -27,7 +25,7 @@ export default function Hero() {
   if (!windowSize) return null; // Evita renderizar até ter o tamanho da tela
 
   return (
-    <section className="relative h-screen flex flex-col gap-5 items-center justify-center  pt-40 md:pt-0">
+    <section className="min-h-screen flex flex-col items-center justify-start mt-32">
       {/* Background animation */}
       <div className="absolute left-20 right-0 top-10 bottom-00 overflow-x-clip">
         <div className="absolute inset-0 bg-gradient-to-b from-background to-background/50" />
@@ -66,9 +64,8 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="z-10">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left px-4 md:px-0">
-          {/* Imagem Responsiva */}
+      <div className="z-20">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-20 text-center md:text-left px-4 md:px-0">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -147,7 +144,12 @@ export default function Hero() {
                 asChild
                 className="w-full sm:w-auto"
               >
-                <a href="#contact">Entre em Contato</a>
+                <a
+                  href="https://wa.me/5565999909348?text=Ol%C3%A1%2C%20tudo%20bem%3F%0A%0AVim%20atrav%C3%A9s%20do%20seu%20portf%C3%B3lio."
+                  target="_blank"
+                >
+                  <FaWhatsapp size={30} /> Entre em Contato
+                </a>
               </Button>
             </motion.div>
 

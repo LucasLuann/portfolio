@@ -24,7 +24,7 @@ export default function Header() {
           className="text-2xl font-bold"
         >
           <span className="bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
-            Dev LL
+            {"<"} Dev LL {" />"}
           </span>
         </motion.div>
 
@@ -40,13 +40,14 @@ export default function Header() {
               >
                 <a
                   href={item.href}
-                  className="relative text-foreground/80 hover:text-primary transition-colors"
+                  className="relative inline-block text-foreground/80 transition-colors hover:text-[#0ea5e9]"
                 >
                   {item.name}
                   <motion.span
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary"
+                    className="absolute left-0 -bottom-1 h-0.5 bg-[#0ea5e9]"
+                    initial={{ width: 0 }}
                     whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
                   />
                 </a>
               </motion.li>

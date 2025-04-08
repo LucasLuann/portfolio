@@ -6,6 +6,14 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "./ui/button";
 import { FiExternalLink } from "react-icons/fi";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Image from "next/image";
 
 const projects = [
   {
@@ -56,11 +64,44 @@ const projects = [
 const Projects = () => {
   return (
     <div className="p-6 min-h-screen bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] dark:from-[#0f172a] dark:to-[#1e293b]">
-      <h1 className="text-3xl font-semibold mb-6 text-gray-900 dark:text-white">
-        📦 Meus Projetos
-      </h1>
+      <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">
+          {"< "} Meus Projetos {" />"}
+        </span>
+      </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+      <div className="container mx-auto mt-20">
+        <Carousel className="w-full">
+          <CarouselContent>
+            {[
+              "/climaapp.png",
+              "/lucasmovies.png",
+              "/brafe.png",
+              "/biscuit.png",
+              "/flexblog.png",
+            ].map((src, index) => (
+              <CarouselItem
+                key={index}
+                className="basis-full shrink-0 flex justify-center items-center"
+              >
+                <div className="w-full max-w-5xl px-4">
+                  <Image
+                    src={src}
+                    alt={`Projeto ${index + 1}`}
+                    width={1200}
+                    height={600}
+                    className="rounded-xl w-full h-[400px] object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+
+      <div className="container grid md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto mt-20">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
