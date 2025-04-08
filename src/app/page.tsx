@@ -10,8 +10,14 @@ export default function Home() {
     <main>
       <Header />
       <Hero />
-      <Skills />
-      <Projects />
+      
+      <section id="skills">
+        <Skills />
+      </section>
+
+      <section id="projects">
+        <Projects />
+      </section>
     </main>
   );
 }
