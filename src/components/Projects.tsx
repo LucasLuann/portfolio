@@ -63,7 +63,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="p-6 min-h-screen bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] dark:from-[#0f172a] dark:to-[#1e293b]">
+    <motion.div className="p-6 min-h-screen bg-gradient-to-br from-[#f8fafc] to-[#e2e8f0] dark:from-[#0f172a] dark:to-[#1e293b]">
       <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center">
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">
           {"< "} Meus Projetos {" />"}
@@ -149,7 +149,7 @@ const Projects = () => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

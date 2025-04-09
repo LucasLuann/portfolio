@@ -57,7 +57,11 @@ const skillsList = [
 
 const Skills = () => {
   return (
-    <section className="min-h-screen py-20 bg-gradient-to-b from-background to-muted/30 mt-32 md:mt-0">
+    <motion.section
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      className="min-h-screen py-20 bg-gradient-to-b from-background to-muted/30 mt-32 md:mt-0"
+    >
       <div className="container mx-auto px-4 my-auto">
         <div className="container">
           <motion.div
@@ -67,7 +71,7 @@ const Skills = () => {
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-5 text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/50">
-               {"< "}Minhas Habilidades {" />"}
+                {"< "}Minhas Habilidades {" />"}
               </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-lg text-center">
@@ -131,7 +135,7 @@ const Skills = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
