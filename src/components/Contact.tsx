@@ -27,7 +27,7 @@ const Contact = () => {
         </p>
 
         <div className="space-y-2">
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center gap-4 flex-wrap">
             <Button variant="outline" asChild>
               <a href="mailto:lucasluann10@gmail.com" target="_blank">
                 <Mail className="mr-2 h-4 w-4" />
