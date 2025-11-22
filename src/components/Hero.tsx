@@ -42,7 +42,7 @@ export default function Hero() {
   if (!windowSize) return null;
 
   return (
-    <section className="min-h-[90vh] flex items-center justify-center py-8 sm:py-12 relative overflow-hidden">
+    <section className="min-h-[90vh] flex items-center justify-center py-8 sm:py-12 pt-24 sm:pt-28 relative overflow-hidden">
       {/* Background animation */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
@@ -111,7 +111,7 @@ export default function Hero() {
               transition={{ duration: 0.5 }}
               className="flex items-center gap-2 mb-4"
             >
-              <Badge variant="outline" className="px-4 py-1 text-sm border-primary/20 bg-primary/10 text-primary">
+              <Badge variant="outline" className="px-4 py-1 text-sm border-primary/20 bg-gradient-to-r from-blue-500 to-cyan-500 text-primary">
                 Disponível para projetos
               </Badge>
             </motion.div>
@@ -131,7 +131,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold my-4"
             >
-              <span className="inline-block bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 dark:from-blue-400 dark:via-blue-500 dark:to-cyan-400 text-transparent bg-clip-text animate-gradient">
+              <span className="inline-block bg-gradient-to-r from-blue-500  to-cyan-500 dark:from-blue-500 dark:via-blue-500 dark:to-cyan-500 text-transparent bg-clip-text animate-gradient">
                 Lucas Luann
               </span>
             </motion.h1>
@@ -140,7 +140,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="relative h-12 overflow-hidden mb-6"
+              className="relative overflow-hidden mb-6"
             >
               {roles.map((role, index) => {
                 const Icon = role.icon;

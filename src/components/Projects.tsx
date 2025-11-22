@@ -1,254 +1,331 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel"
+import { ExternalLink, Code2 } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 const projects = [
   {
     id: 1,
+    title: "Olliver DI PRATA",
+    description: "E-commerce de joias em prata 925 com catálogo de produtos, filtros por categoria e integração com WhatsApp.",
+    techs: ["Next.js", "Tailwind CSS", "TypeScript"],
+    link: "https://olliverdiprata.vercel.app/",
+    color: "from-blue-500 to-cyan-500",
+    image: "/olliverdiprata.png",
+  },
+  {
+    id: 2,
     title: "Previsão do Tempo",
     description: "Aplicação de previsão do tempo",
     techs: ["Next.js", "Tailwind", "Framer Motion", "TypeScript", "Axios"],
     link: "https://clima-app-ll.vercel.app/",
     color: "from-blue-500 to-cyan-400",
+    image: "/climaapp.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "Filmes",
     description: "Consulta de filmes em alta, mais avaliados, e mais recentes.",
     techs: ["React", "ShadCN", "Recharts", "TypeScript", "Axios"],
     link: "https://lucasmovies.vercel.app/",
     color: "from-red-500 to-orange-400",
+    image: "/lucasmovies.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "Brafé",
     description: "Projeto fictício de um site de café.",
     techs: ["HTML5", "CSS3"],
     link: "https://lucasluann.github.io/Brafe-Css-Puro/",
     color: "from-amber-600 to-yellow-400",
+    image: "/brafe.png",
   },
   {
-    id: 4,
+    id: 5,
     title: "Biscuit da Grazy",
     description: "Landing Page de uma prestadora de serviços relacionados a artesanato.",
     techs: ["HTML5", "CSS3"],
     link: "https://biscuitdagrazi.vercel.app/",
     color: "from-pink-500 to-rose-400",
+    image: "/biscuit.png",
   },
   {
-    id: 5,
+    id: 6,
     title: "Portfólio Médico",
     description: "Portólio simples de uma médica.",
     techs: ["HTML5", "CSS3"],
     link: "https://josianevenite.vercel.app/",
     color: "from-emerald-500 to-teal-400",
+    image: "/flexblog.png",
   },
   {
-    id: 6,
+    id: 7,
     title: "Blog Fictício",
     description: "Site fictício de serviços.",
     techs: ["HTML5", "CSS3"],
     link: "https://lucasluann.github.io/FlexBlog/",
     color: "from-violet-500 to-purple-400",
+    image: "/flexblog.png",
   },
 ]
 
-const projectImages = ["/climaapp.png", "/lucasmovies.png", "/brafe.png", "/biscuit.png", "/flexblog.png"]
+const projectImages = ["/olliverdiprata.png", "/climaapp.png", "/lucasmovies.png", "/brafe.png", "/biscuit.png", "/flexblog.png"]
 
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [api, setApi] = useState<CarouselApi>()
-
-  useEffect(() => {
-    if (!api) {
-      return
-    }
-
-    api.on("select", () => {
-      setActiveIndex(api.selectedScrollSnap())
-    })
-  }, [api])
 
   return (
-    <section className="py-12 sm:py-20 px-4 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900 -z-10" />
-      <div className="absolute inset-0 opacity-30 dark:opacity-20 -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_500px_at_50%_200px,rgba(120,119,198,0.3),transparent)]" />
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_500px_at_80%_80%,rgba(120,119,198,0.3),transparent)]" />
+    <section id="projects" className="relative py-24 px-6 overflow-hidden">
+      {/* Background com gradiente e efeitos */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-muted/30" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {Array.from({ length: 4 }).map((_, i) => {
+          const positions = [
+            { x: [0, 200, 0], y: [0, 150, 0], left: "10%", top: "20%" },
+            { x: [0, -150, 0], y: [0, 200, 0], left: "80%", top: "30%" },
+            { x: [0, 180, 0], y: [0, -100, 0], left: "50%", top: "70%" },
+            { x: [0, -200, 0], y: [0, 150, 0], left: "20%", top: "80%" },
+          ]
+          const pos = positions[i] || positions[0]
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-gradient-to-br from-blue-500/5 to-cyan-500/5"
+              animate={{
+                x: pos.x,
+                y: pos.y,
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 15 + i * 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+              style={{
+                width: 200 + i * 50,
+                height: 200 + i * 50,
+                left: pos.left,
+                top: pos.top,
+              }}
+            />
+          )
+        })}
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section header */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 relative inline-block">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70 dark:from-primary dark:to-primary/50">
-              Meus Projetos
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold mb-6"
+          >
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">
+              {"< "} Meus Projetos {" />"}
             </span>
-            <motion.span
-              className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary/30 rounded-full"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            />
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mt-4 px-4">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+          >
             Confira alguns dos meus trabalhos recentes em desenvolvimento web e design
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* Featured project carousel */}
+        {/* Featured Project - Destaque */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mb-12 sm:mb-20 relative z-20"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-16 relative z-20"
         >
-          <Carousel 
-            className="w-full"
-            setApi={setApi}
-          >
-            <CarouselContent>
-              {projectImages.map((src, index) => (
-                <CarouselItem key={index} className="sm:basis-4/5 lg:basis-3/4 mx-auto">
-                  <div className="relative group">
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-primary/50 rounded-2xl blur opacity-40 group-hover:opacity-100 transition duration-500" />
-                    <div className="relative bg-white dark:bg-slate-900 rounded-2xl p-2 overflow-hidden">
-                      <Image
-                        src={src || "/placeholder.svg"}
-                        alt={`Projeto ${index + 1}`}
-                        width={1200}
-                        height={600}
-                        className="rounded-xl w-full h-[250px] sm:h-[400px] object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                        priority={index === 0}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 z-30">
-                        <Button
-                          variant="default"
-                          size="lg"
-                          className="w-full bg-white/10 hover:bg-white/20 dark:bg-slate-950/50 dark:hover:bg-slate-950/70 backdrop-blur-md text-white border-[1px] border-white/20 shadow-lg transform hover:scale-[1.02] transition-all duration-300 relative z-30 group/btn"
-                          asChild
-                        >
-                          <a 
-                            href={projects[index % projects.length].link} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 py-6 sm:py-7"
-                          >
-                            Ver projeto
-                            <ExternalLink className="w-4 h-4 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110" />
-                          </a>
-                        </Button>
-                      </div>
+          <div className="relative group">
+            <div className={`absolute -inset-1 bg-gradient-to-r ${projects[0].color} rounded-3xl blur-xl opacity-40 group-hover:opacity-60 transition duration-500`} />
+            <div className="relative bg-card rounded-3xl overflow-hidden border border-border/50">
+              <div className="grid md:grid-cols-2 gap-0">
+                {/* Imagem */}
+                <div className="relative h-[300px] md:h-[500px] overflow-hidden">
+                  <Image
+                    src={projectImages[0] || "/placeholder.svg"}
+                    alt={`Projeto ${projects[0].title}`}
+                    fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+                
+                {/* Conteúdo */}
+                <div className="p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-card to-card/50 relative">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className={`p-3 rounded-xl bg-gradient-to-br ${projects[0].color} shadow-lg`}>
+                      <Code2 className="h-6 w-6 text-white" />
                     </div>
+                    <Badge className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
+                      Projeto em Destaque
+                    </Badge>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="hidden sm:block relative z-30">
-              <CarouselPrevious className="left-2 md:left-8 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-800 border-none shadow-lg" />
-              <CarouselNext className="right-2 md:right-8 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm hover:bg-white dark:hover:bg-slate-800 border-none shadow-lg" />
+                  
+                  <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">
+                    {projects[0].title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
+                    {projects[0].description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {projects[0].techs.map((tech, i) => (
+                      <Badge
+                        key={i}
+                        className="bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-colors"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                  
+                  <Button
+                    size="lg"
+                    className={`w-full md:w-auto bg-gradient-to-r ${projects[0].color} hover:opacity-90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold`}
+                    asChild
+                  >
+                    <a 
+                      href={projects[0].link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      Ver Projeto
+                      <ExternalLink className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </div>
-          </Carousel>
-
-          {/* Carousel indicators */}
-          <div className="flex justify-center gap-2 mt-4 sm:mt-6 relative z-30">
-            {projectImages.map((_, index) => (
-              <motion.div
-                key={index}
-                className={cn(
-                  "w-2 h-2 rounded-full transition-all duration-300 cursor-pointer",
-                  activeIndex === index ? "w-6 sm:w-8 bg-primary" : "bg-slate-300 dark:bg-slate-700",
-                )}
-                animate={{
-                  width: activeIndex === index ? 24 : 8,
-                }}
-                transition={{ duration: 0.3 }}
-                onClick={() => api?.scrollTo(index)}
-              />
-            ))}
           </div>
         </motion.div>
 
         {/* Projects grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 relative z-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-20">
           <AnimatePresence>
-            {projects.map((project, index) => (
+            {projects.slice(1).map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
                 transition={{
                   duration: 0.5,
                   delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100,
                 }}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
+                whileHover={{ y: -4, scale: 1.01 }}
                 className="group relative"
               >
                 <div
                   className={cn(
                     "absolute inset-0 rounded-2xl bg-gradient-to-br -z-10",
                     project.color,
-                    "opacity-0 blur-xl transition-opacity duration-700",
-                    hoveredProject === project.id ? "opacity-20" : "",
+                    "opacity-0 blur-xl transition-opacity duration-500",
+                    hoveredProject === project.id ? "opacity-30" : "",
                   )}
                 />
 
                 <Card
                   className={cn(
                     "h-full flex flex-col relative overflow-hidden",
-                    "bg-white/80 dark:bg-slate-800/80 backdrop-blur-md",
-                    "border border-slate-200/80 dark:border-slate-700/80",
-                    "shadow-lg hover:shadow-xl transition-all duration-500",
-                    "rounded-2xl hover:-translate-y-1",
+                    "bg-card/80 backdrop-blur-sm",
+                    "border border-border/50",
+                    "shadow-lg hover:shadow-2xl transition-all duration-300",
+                    "rounded-2xl",
                   )}
                 >
-                  <div
+                  {/* Gradiente de fundo no hover */}
+                  <motion.div
                     className={cn(
-                      "absolute h-1 top-0 left-0 right-0 bg-gradient-to-r",
+                      "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300",
                       project.color,
-                      "transform origin-left transition-transform duration-500",
-                      hoveredProject === project.id ? "scale-x-100" : "scale-x-0",
                     )}
                   />
 
-                  <CardContent className="p-4 sm:p-6 space-y-4 flex-1">
-                    <div className="space-y-2 sm:space-y-3">
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 line-clamp-2">{project.description}</p>
+                  {/* Efeito de brilho */}
+                  <div
+                    className={cn(
+                      "absolute -inset-1 bg-gradient-to-r opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300",
+                      project.color,
+                    )}
+                  />
+
+                  {/* Linha superior com gradiente */}
+                  <div
+                    className={cn(
+                      "absolute top-0 left-0 right-0 h-1 bg-gradient-to-r rounded-t-2xl",
+                      project.color,
+                    )}
+                  />
+
+                  {/* Imagem do projeto */}
+                  <div className="relative h-48 overflow-hidden rounded-t-2xl">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={`Projeto ${project.title}`}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+                  </div>
+
+                  <CardContent className="p-6 space-y-4 flex-1 relative z-10">
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div
+                          className={cn(
+                            "p-2 rounded-lg bg-gradient-to-br shadow-md",
+                            project.color,
+                          )}
+                        >
+                          <Code2 className="h-5 w-5 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-semibold text-foreground mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-cyan-500 transition-all duration-300">
+                            {project.title}
+                          </h3>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground line-clamp-2 group-hover:text-foreground/80 transition-colors duration-300">
+                        {project.description}
+                      </p>
                     </div>
 
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-2 sm:pt-3">
+                    <div className="flex flex-wrap gap-2 pt-2">
                       {project.techs.map((tech, i) => (
                         <Badge
                           key={i}
                           variant="secondary"
-                          className={cn(
-                            "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200",
-                            "hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors",
-                            "text-xs font-medium",
-                          )}
+                          className="bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 transition-colors text-xs font-medium"
                         >
                           {tech}
                         </Badge>
@@ -256,16 +333,19 @@ const Projects = () => {
                     </div>
                   </CardContent>
 
-                  <CardFooter className="p-4 pt-0">
+                  <CardFooter className="p-6 pt-0 relative z-10">
                     <Button
                       className={cn(
                         "w-full relative group/btn overflow-hidden",
-                        "bg-transparent hover:bg-transparent",
-                        "border border-slate-200 dark:border-slate-700",
-                        "text-slate-900 dark:text-slate-100",
+                        "bg-gradient-to-r",
+                        project.color,
+                        "text-white border-0",
+                        "hover:opacity-90",
+                        "shadow-lg hover:shadow-xl",
                         "transition-all duration-300",
+                        "font-semibold",
                       )}
-                      variant="outline"
+                      variant="default"
                       asChild
                     >
                       <a 
@@ -275,12 +355,7 @@ const Projects = () => {
                         className="flex items-center justify-center gap-2 py-6"
                       >
                         <span className="relative z-10">Ver Projeto</span>
-                        <ExternalLink className="h-4 w-4 relative z-10 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110" />
-                        <div className={cn(
-                          "absolute inset-0 -z-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300",
-                          "bg-gradient-to-r",
-                          project.color
-                        )} />
+                        <ExternalLink className="h-5 w-5 relative z-10 transition-all duration-300 group-hover/btn:translate-x-1 group-hover/btn:scale-110" />
                       </a>
                     </Button>
                   </CardFooter>

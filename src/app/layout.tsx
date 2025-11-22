@@ -11,6 +11,13 @@ export const metadata: Metadata = {
   title: "Lucas Luann - Desenvolvedor Front-end",
   description:
     "Portfólio desenvolvedor front-end especializado em React, Next.js, e UI/UX moderno",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
