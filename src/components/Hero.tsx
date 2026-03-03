@@ -13,9 +13,9 @@ const technologies = [
 ];
 
 const roles = [
-  { title: "Front-end", icon: MonitorSmartphoneIcon },
-  { title: "UI/UX", icon: BrainCircuitIcon },
-  { title: "Clean Code", icon: Code2Icon },
+  { title: "Desenvolvedor Local In Cuiabá", icon: MonitorSmartphoneIcon },
+  { title: "React & Next.js", icon: Code2Icon },
+  { title: "UI/UX Design", icon: BrainCircuitIcon },
 ];
 
 export default function Hero() {
@@ -53,7 +53,7 @@ export default function Hero() {
           const centerX = windowSize.width / 2;
           const centerY = windowSize.height / 2;
           const speed = Math.random() * 20 + 30; // Velocidade mais lenta
-          
+
           return (
             <motion.div
               key={i}
@@ -92,9 +92,8 @@ export default function Hero() {
                 height: Math.random() * 300 + 100,
                 opacity: Math.random() * 0.15 + 0.05,
                 filter: 'blur(2px)',
-                background: `radial-gradient(circle at center, ${
-                  Math.random() > 0.5 ? 'rgba(59, 130, 246, 0.08)' : 'rgba(6, 182, 212, 0.08)'
-                }, transparent)`,
+                background: `radial-gradient(circle at center, ${Math.random() > 0.5 ? 'rgba(59, 130, 246, 0.08)' : 'rgba(6, 182, 212, 0.08)'
+                  }, transparent)`,
               }}
             />
           );
@@ -129,12 +128,21 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold my-4"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mt-4 mb-2"
             >
               <span className="inline-block bg-gradient-to-r from-blue-500  to-cyan-500 dark:from-blue-500 dark:via-blue-500 dark:to-cyan-500 text-transparent bg-clip-text animate-gradient">
                 Lucas Luann
               </span>
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
+              className="text-lg md:text-xl text-foreground/80 mb-6 max-w-lg mx-auto md:mx-0"
+            >
+              Desenvolvedor Front-end localizado em <strong>Cuiabá - MT</strong>, transformando ideias em experiências web incríveis, modernas e rápidas.
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -270,7 +278,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-cyan-500/20 rounded-2xl" />
               <Image
                 src="/avatar-profile.png"
-                alt="Lucas Luann"
+                alt="Lucas Luann - Desenvolvedor Front-end em Cuiabá MT"
                 width={500}
                 height={500}
                 className="rounded-2xl relative z-10"
